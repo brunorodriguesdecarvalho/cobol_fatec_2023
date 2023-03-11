@@ -4,83 +4,75 @@
        INSTALLATION. FATEC-SP.
        DATE-WRITTEN. 11/03/2022.
        DATE-COMPILED. 11/03/2022.
-
+      
        ENVIRONMENT DIVISION.
-       
+             
        CONFIGURATION SECTION. 
        SOURCE-COMPUTER. BRUNO-NOTEBOOK.
        OBJECT-COMPUTER. BRUNO-NOTEBOOK.
        SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
-
+      
        INPUT-OUTPUT SECTION. 
-
+      
        FILE-CONTROL. 
-
            SELECT CADFUN ASSIGN TO DISK
            ORGANIZATION IS LINE SEQUENTIAL.
-
+           
            SELECT CADSAI ASSIGN TO DISK
            ORGANIZATION IS LINE SEQUENTIAL.
-
+      
        DATA DIVISION. 
-
+      
        FILE SECTION. 
        FD CADFUN
            LABEL RECORD ARE STANDARD
            VALUE OF FILE-ID IS "CADFUN.DAT".
-
        01 REG-ENT.
            02 CODIGO-ENT PIC 9(05).
            02 NOME-ENT PIC X(20).
            02 SALARIO-BRUTO PIC 9(05)V99.
-
+      
        FD CADSAI
            LABEL RECORD ARE STANDARD
            VALUE OF FILE-ID IS "CADSAI.DAT".
-
        01 REG-SAI.
            02 CODIGO-SAI PIC 9(05).
            02 NOME-SAI PIC X(20).
            02 SALARIO-REAJUSTADO PIC 9(05)V99.
-
+      
        WORKING-STORAGE SECTION. 
-
        77 FIM-ARQ PIC X(03) VALUE "NAO".
-
+      
        PROCEDURE DIVISION.
-
-           PERFORM INICIO.
-           PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
-           PERFORM TERMINO.
-
+           PERFORM LEITURA
+           PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM"
+           PERFORM TERMINO
            STOP RUN.
-
-       INICIO.
-           OPEN INPUT CADFUN OUTPUT CADSAI.
-           PERFORM LEITURA.
-       
+      
        LEITURA.
+           OPEN INPUT CADFUN OUTPUT CADSAI
            READ CADFUN 
            AT END MOVE "SIM" TO FIM-ARQ. 
-
+      
        PRINCIPAL.
-           PERFORM CALCULO.
-           PERFORM GRAVACAO.
-           PERFORM LEITURA.
-
+           IF FIM-ARQ NOT EQUAL "SIM"
+              PERFORM CALCULO
+              PERFORM GRAVACAO
+              READ CADFUN 
+              AT END MOVE "SIM" TO FIM-ARQ.
+      
        CALCULO.
            IF SALARIO-BRUTO IS LESS THAN OR EQUAL TO 1000
               COMPUTE SALARIO-REAJUSTADO = SALARIO-BRUTO * 1,12
-           ELSE IF SALARIO-BRUTO IS LESS OR EQUAL TO 2000
+           ELSE IF SALARIO-BRUTO IS LESS THAN OR EQUAL TO 2000
               COMPUTE SALARIO-REAJUSTADO = SALARIO-BRUTO * 1,11
-           ELSE IF SALARIO-BRUTO IS GREATER THAN 2000
+           ELSE
               COMPUTE SALARIO-REAJUSTADO = SALARIO-BRUTO * 1,10.
-
+      
        GRAVACAO.
            MOVE CODIGO-ENT TO CODIGO-SAI.
            MOVE NOME-ENT TO NOME-SAI.
-           WRITE REG-SAI.       
-
+           WRITE REG-SAI.
+      
        TERMINO.
            CLOSE CADFUN CADSAI.
-      
