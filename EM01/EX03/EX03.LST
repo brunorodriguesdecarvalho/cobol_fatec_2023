@@ -1,0 +1,96 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 04-Mar-23 13:22 Page   1
+*                                       EX03.CBL
+* Options: LIST(EX03.LST) ASMLIST(EX03.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID. EX03.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION. FATEC-SP.
+     5 DATE-WRITTEN. 04/03/2022.
+     6 DATE-COMPILED. 04-Mar-23 13:22.
+     7
+     8 ENVIRONMENT DIVISION.
+     9
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER. BRUNO-NOTEBOOK.
+    12 OBJECT-COMPUTER. BRUNO-NOTEBOOK.
+    13 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16
+    17 FILE-CONTROL.
+    18
+    19     SELECT CADALU ASSIGN TO DISK
+    20     ORGANIZATION IS LINE SEQUENTIAL.
+    21
+    22     SELECT CADATU ASSIGN TO DISK
+    23     ORGANIZATION IS LINE SEQUENTIAL.
+    24
+    25 DATA DIVISION.
+    26
+    27 FILE SECTION.
+    28 FD CADALU
+    29     LABEL RECORD ARE STANDARD
+    30     VALUE OF FILE-ID IS "CADALU.DAT".
+    31
+    32 01 REG-ENT.
+    33     02 NUMERO-ENT PIC 9(05).
+    34     02 NOME-ENT PIC X(20).
+    35     02 NOTA1 PIC 9(02)V99.
+    36     02 NOTA2 PIC 9(02)V99.
+    37     02 NOTA3 PIC 9(02)V99.
+    38
+    39 FD CADATU
+    40     LABEL RECORD ARE STANDARD
+    41     VALUE OF FILE-ID IS "CADATU.DAT".
+    42
+    43 01 REG-SAI.
+    44     02 NUMERO-SAI PIC 9(05).
+    45     02 MEDIA PIC 9(02)V99.
+    46
+    47 WORKING-STORAGE SECTION.
+    48
+    49 77 FIM-ARQ PIC X(03) VALUE "NAO".
+    50
+    51 PROCEDURE DIVISION.
+    52
+    53     PERFORM INICIO.
+    54         PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+    55         PERFORM TERMINO.
+    56
+    57     STOP RUN.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 04-Mar-23 13:22 Page   2
+*                                       EX03.CBL
+    58
+    59 INICIO.
+    60
+    61     OPEN INPUT CADALU
+    62          OUTPUT CADATU.
+    63     PERFORM LEITURA.
+    64
+    65 LEITURA.
+    66
+    67     READ CADALU AT END MOVE "SIM" TO FIM-ARQ.
+    68
+    69 PRINCIPAL.
+    70
+    71         PERFORM CALCULO.
+    72         PERFORM LEITURA.
+    73
+    74 CALCULO.
+    75     COMPUTE MEDIA = (NOTA1+NOTA2+NOTA3)/3
+    76     PERFORM GRAVACAO.
+    77
+    78 GRAVACAO.
+    79
+    80     MOVE NUMERO-ENT TO NUMERO-SAI.
+    81     WRITE REG-SAI.
+    82
+    83 TERMINO.
+    84
+    85     CLOSE CADALU CADATU.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1016     Code:         336     Dictionary:        1098

@@ -1,0 +1,96 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 04-Mar-23 13:39 Page   1
+*                                       EX04.CBL
+* Options: LIST(EX04.LST) ASMLIST(EX04.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID. EX04.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION. FATEC-SP.
+     5 DATE-WRITTEN. 04/03/2022.
+     6 DATE-COMPILED. 04-Mar-23 13:39.
+     7
+     8 ENVIRONMENT DIVISION.
+     9
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER. BRUNO-NOTEBOOK.
+    12 OBJECT-COMPUTER. BRUNO-NOTEBOOK.
+    13 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16
+    17 FILE-CONTROL.
+    18
+    19     SELECT CADCLI1 ASSIGN TO DISK
+    20     ORGANIZATION IS LINE SEQUENTIAL.
+    21
+    22     SELECT CADCLI2 ASSIGN TO DISK
+    23     ORGANIZATION IS LINE SEQUENTIAL.
+    24
+    25 DATA DIVISION.
+    26
+    27 FILE SECTION.
+    28 FD CADCLI1
+    29     LABEL RECORD ARE STANDARD
+    30     VALUE OF FILE-ID IS "CADCLI1.DAT".
+    31
+    32 01 REG-ENT.
+    33     02 COD-ENT  PIC 9(05).
+    34     02 NOME-ENT PIC X(20).
+    35     02 SEXO-ENT PIC X(01).
+    36
+    37 FD CADCLI2
+    38     LABEL RECORD ARE STANDARD
+    39     VALUE OF FILE-ID IS "CADCLI2.DAT".
+    40
+    41 01 REG-SAI.
+    42     02 NOME-SAI PIC X(20).
+    43     02 COD-SAI  PIC 9(05).
+    44
+    45 WORKING-STORAGE SECTION.
+    46
+    47 77 FIM-ARQ PIC X(03) VALUE "NAO".
+    48
+    49 PROCEDURE DIVISION.
+    50
+    51     PERFORM INICIO.
+    52         PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+    53         PERFORM TERMINO.
+    54
+    55     STOP RUN.
+    56
+    57 INICIO.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 04-Mar-23 13:39 Page   2
+*                                       EX04.CBL
+    58
+    59     OPEN INPUT CADCLI1
+    60     OUTPUT CADCLI2.
+    61     PERFORM LEITURA.
+    62
+    63 LEITURA.
+    64
+    65     READ CADCLI1
+    66     AT END MOVE "SIM" TO FIM-ARQ.
+    67
+    68 PRINCIPAL.
+    69
+    70         PERFORM CALCULO.
+    71         PERFORM LEITURA.
+    72
+    73 CALCULO.
+    74     IF SEXO-ENT EQUAL "M"
+    75        PERFORM GRAVACAO.
+    76
+    77 GRAVACAO.
+    78
+    79     MOVE COD-ENT TO COD-SAI.
+    80     MOVE NOME-ENT TO NOME-SAI.
+    81     WRITE REG-SAI.
+    82
+    83 TERMINO.
+    84
+    85     CLOSE CADCLI1 CADCLI2.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1016     Code:         323     Dictionary:        1040
