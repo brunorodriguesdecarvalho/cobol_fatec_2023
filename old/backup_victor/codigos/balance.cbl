@@ -1,0 +1,65 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID.  PGMP1.
+       AUTHOR.      FATEC.
+      *  ESTE PROGRAMA GERA O ARQUIVO DE NOTAS FISCAIS (NOTAS.DAT) 
+      *  A PARTIR DO ARQUIVO DE PEDIDOS (PEDIDOS.DAT)
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER.    PC.
+       OBJECT-COMPUTER.    PC.
+       SPECIAL-NAMES.
+               DECIMAL-POINT  IS  COMMA.
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+            SELECT   PEDIDO1    ASSIGN   DISK
+                 ORGANIZATION IS LINE SEQUENTIAL.
+            SELECT   PEDIDO2      ASSIGN   DISK
+                 ORGANIZATION IS LINE SEQUENTIAL.
+            SELECT   PEDIDOS      ASSIGN   DISK
+                 ORGANIZATION IS LINE SEQUENTIAL.
+       DATA DIVISION.
+       FILE SECTION.
+       FD  PEDIDO1
+             LABEL RECORDS STANDARD
+             VALUE  OF  FILE-ID   IS  "PEDIDO1.DAT".
+       01  REGPEDIDO1.
+             05  NUMPED1         PIC X(06).
+             05  DESCPED1       PIC X(20).
+       FD  PEDIDO2
+             LABEL RECORDS STANDARD
+             VALUE  OF  FILE-ID   IS  "PEDIDO2.DAT".
+       01  REGPEDIDO2.
+             05  NUMPED2         PIC X(06).
+             05  DESCPED2       PIC X(20).
+       FD  PEDIDOS
+              LABEL RECORDS STANDARD
+              VALUE  OF  FILE-ID   IS  "PEDIDOS.DAT".
+       01  REGPEDIDOS.
+              05  NUMPED         PIC 9(06).
+              05  DESCPED       PIC X(20).
+       PROCEDURE DIVISION.
+
+       ROTINA-PRINCIPAL.
+           OPEN  INPUT PEDIDO1   PEDIDO2    OUTPUT PEDIDOS.
+           PERFORM LER-PEDIDO1.
+           PERFORM LER-PEDIDO2.
+           PERFORM ROTINA  UNTIL  (NUMPED1  EQUAL HIGH-VALUES) AND
+                                    (NUMPED2  EQUAL HIGH-VALUES).
+           CLOSE  PEDIDO1   PEDIDO2   PEDIDOS.
+           STOP RUN.
+
+       LER-PEDIDO1.
+           READ  PEDIDO1  AT  END    MOVE  HIGH-VALUES TO NUMPED1.
+
+       LER-PEDIDO2.
+           READ  PEDIDO2  AT  END    MOVE  HIGH-VALUES TO NUMPED2.
+       ROTINA.
+           IF  NUMPED1   GREATER  NUMPED2
+                MOVE   REGPEDIDO2    TO  REGPEDIDOS
+                WRITE   REGPEDIDOS
+                PERFORM   LER-PEDIDO2
+           ELSE
+                MOVE   REGPEDIDO1    TO  REGPEDIDOS
+                WRITE   REGPEDIDOS
+                PERFORM LER-PEDIDO1.
+
