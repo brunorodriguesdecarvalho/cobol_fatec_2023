@@ -1,0 +1,100 @@
+
+
+                                                                 PAG. 01        
+
+
+                     RELATORIO DE SOCIOS ATRASADOS                              
+
+NUMERO DO SOCIO          NOME DO SOCIO                VALOR DO PAGAMENTO        
+
+    000.002             ANA MARIA SOUZA                200.000.000,99           
+    000.004             CARLA SOUSA                    400.000.000,99           
+    000.006             MARIA LIMA                     600.000.000,99           
+    000.008             ANTONIA GOMES                  800.000.000,99           
+    000.010             FABIO SANTOS                   110.000.000,99           
+    000.012             MARCIO LOPES                   130.000.000,99           
+    000.014             MARIO CUNHA                    150.000.000,99           
+    000.016             ANDRE LIMA                     170.000.000,99           
+    000.018             MARIA SANTOS                   190.000.000,99           
+    000.020             RICARDO ALVES                  112.000.000,99           
+    000.023             BRUNO OLIVEIRA                 115.000.000,99           
+    000.025             RAFAEL SOUSA                   117.000.000,99           
+    000.027             LUCAS OLIVEIRA                 119.000.000,99           
+    000.029             THIAGO RIBEIRO                 164.000.000,99           
+    000.032             ANTONIO CARLOS                 734.951.869,19           
+    000.034             ANA LUCIA                      238.880.017,98           
+    000.036             MARCOS AURELIO                 797.218.158,51           
+    000.038             GABRIEL OLIVEIRA               868.055.382,74           
+    000.040             FELIPE RIBEIRO                 716.124.196,07           
+    000.042             RAFAEL PEREIRA                 391.234.168,69           
+    000.044             ANA BEATRIZ                    439.335.858,28           
+    000.046             PEDRO SANTANA                  539.042.210,36           
+    000.048             MARIA HELENA                   564.699.792,80           
+    000.050             ISABELA RODRIGUES              292.998.583,05           
+    000.052             ANA LUIZA                      383.010.703,90           
+    000.054             MARCIO LIMA                    190.070.205,04           
+    000.056             PEDRO SILVA                    240.799.081,05           
+    000.058             CARLOS ROBERTO                 905.320.812,68           
+    000.060             VITORIA PEREIRA                302.222.717,13           
+    000.062             LUCAS FERREIRA                 294.852.675,51           
+
+                                                                 PAG. 02        
+
+
+                     RELATORIO DE SOCIOS ATRASADOS                              
+
+NUMERO DO SOCIO          NOME DO SOCIO                VALOR DO PAGAMENTO        
+
+    000.064             MARIA LIMA                     356.955.657,31           
+    000.066             ANA BEATRIZ SOUZA              618.697.729,39           
+    000.068             PEDRO PEREIRA                  359.512.993,58           
+    000.070             FERNANDA RODRIGUES             205.959.382,30           
+    000.072             MARCOS COSTA                   508.862.086,18           
+    000.074             PEDRO GOMES                    429.326.011,77           
+    000.076             JULIA FERREIRA                 439.335.350,51           
+    000.078             RAFAEL COSTA                   416.062.745,97           
+    000.080             LUCAS LIMA                     311.084.139,92           
+    000.082             PEDRO ARAUJO                   953.415.767,39           
+    000.084             RAFAELA COSTA                  543.287.986,66           
+    000.086             ANA LUIZA SILVA                599.280.397,87           
+    000.088             ISABELA SOUSA                  613.151.390,33           
+    000.090             ANA PEREIRA                    478.191.274,04           
+    000.092             MARCIO LOPES                   951.109.410,84           
+    000.094             MARCIA SOUZA                   334.870.698,39           
+    000.096             ANA BEATRIZ COSTA              126.202.861,11           
+    000.098             RAFAELA GOMES                  658.634.759,36           
+    000.100             FERNANDA LIMA                  423.089.801,77           
+    000.102             MARCOS RIBEIRO                 527.740.381,92           
+    000.105             PEDRO GOMES                    126.226.596,24           
+    000.107             GABRIELA COSTA                 139.080.484,56           
+    000.109             JULIA RODRIGUES                991.327.059,13           
+    000.111             PEDRO LIMA                     814.305.244,20           
+    000.113             GABRIEL RIBEIRO                522.579.217,27           
+    000.115             ANA BEATRIZ LIMA               498.005.836,50           
+    000.117             ISABELA SOUSA                  512.240.189,89           
+    000.119             LUCAS ARAUJO                   715.970.656,23           
+    000.121             JULIA FERNANDES                930.619.679,14           
+    000.123             ANA CAROLINA COSTA             302.567.126,24           
+
+                                                                 PAG. 03        
+
+
+                     RELATORIO DE SOCIOS ATRASADOS                              
+
+NUMERO DO SOCIO          NOME DO SOCIO                VALOR DO PAGAMENTO        
+
+    000.125             GUSTAVO RODRIGUES              187.143.604,23           
+    000.127             FERNANDA LIMA                  238.427.301,89           
+    000.129             MARCIA ALVES                   716.720.706,13           
+    000.131             RAFAELA SILVA                  509.175.346,49           
+    000.133             MARCOS GOMES                   262.348.274,20           
+    000.135             PEDRO COSTA                    759.893.989,95           
+    000.137             CARLA RODRIGUES                361.000.158,57           
+    000.139             GABRIELA GOMES                 745.707.196,83           
+    000.141             RAFAEL LIMA                    294.131.138,28           
+    000.143             JULIA SOUSA                    282.580.691,89           
+    000.145             ANA CAROLINA RODRIGUES         782.986.581,13           
+    000.147             LUCAS RIBEIRO                  480.821.040,25           
+
+Total de Socios atrasados : 00056                                               
+Valor Total atrasado      : R$ 032.304.445.392,69                               
