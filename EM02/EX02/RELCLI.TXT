@@ -1,0 +1,72 @@
+                                                      PAG. 001          
+                       TURISMAR  TURISMOS                               
+
+
+              CLIENTES NO PERIODO DE:  2010 A 2011                      
+
+
+      NOME                       ESTADO             TELEFONE            
+--------------------------------------------------------------          
+
+  Ana Souza                        MG               3456-2004           
+  Bruno Silva                      SP               4567-1904           
+  Carla Oliveira                   RJ               5678-1804           
+  Yasmin Santos                    PB               4567-3003           
+  Ana Carolina Oliveira            SP               5678-2903           
+  Bruno Fernandes                  RJ               6789-2803           
+  Camila Carvalho                  MG               7890-2703           
+  Daniel Oliveira                  RS               8901-2603           
+  Eduarda Fernandes                BA               9012-2503           
+  Fabio Santos                     PR               0123-2403           
+  Gabriela Carvalho                GO               1234-2303           
+  Henrique Silva                   MS               2345-2203           
+  Amanda Rodrigues                 MG               1234-1104           
+  Beatriz Almeida                  GO               2345-1004           
+  Carlos Oliveira                  PR               3456-2904           
+  Daniela Souza                    RS               4567-2604           
+  Elias Santos                     SP               5678-1904           
+  Fabiana Pereira                  MS               6789-1504           
+  Gabriel Oliveira                 RJ               7890-1204           
+  Henrique Carvalho                RS               8901-2704           
+  Isadora Fernandes                AM               9012-3004           
+  Joao Paulo Silva                 BA               0123-2904           
+  Karla Souza                      SP               1122-1604           
+  Lucas Oliveira                   RN               2233-0704           
+  Mariana Santos                   GO               3344-0904           
+
+
+
+                                                      PAG. 002          
+                       TURISMAR  TURISMOS                               
+
+
+              CLIENTES NO PERIODO DE:  2010 A 2011                      
+
+
+      NOME                       ESTADO             TELEFONE            
+--------------------------------------------------------------          
+
+  Nathaniel Fernandes              RJ               4455-0804           
+  Olivia Carvalho                  PB               5566-0704           
+  Patricia Oliveira                PR               6677-0604           
+  Pedro Silva                      RS               0987-2202           
+  Quiteria Fernandes               MT               1098-2802           
+  Renan Santos                     SP               2109-0102           
+  Sabrina Carvalho                 RS               3210-0902           
+  Tatiana Oliveira                 AM               4321-0802           
+  Ulisses Fernandes                MG               5432-0702           
+  Valentina Santos                 SC               6543-0602           
+  Wagner Alves                     RS               7654-0502           
+  Xavier Carvalho                  PA               8765-0402           
+  Yara Fernandes                   PR               9876-0302           
+  Ze Silva                         RN               0987-0201           
+  Alessandra Oliveira              AL               2109-0101           
+  Bianca Carvalho                  PR               3210-0001           
+  Cassio Santos                    RS               4321-0901           
+  Davi Oliveira                    GO               5432-0801           
+  Elaine Fernandes                 SC               6543-0701           
+  Fabio Pereira                    MS               7654-0601           
+
+
+
+Total de Clientes: 0045                                                 

@@ -1,0 +1,175 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 22-Apr-23 12:11 Page   1
+*                                       EX02.CBL
+* Options: LIST(EX02.LST) ASMLIST(EX02.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID. EX02.
+     3 AUTHOR. BRUNO CARVALHO.
+     4 DATE-WRITTEN. 22/04/2023.
+     5 DATE-COMPILED. 22-Apr-23 12:11.
+     6 INSTALLATION. BRUNO-PC.
+     7 SECURITY. ESSE PROGRAMA SO PODE SER ALTERADO PELOA AUTOR.
+     8*REMARKS. Ler CADCLI
+     9*         Imprimir RELCLI conforme lay-out.
+    10*         Imprimir cabeçalhos em todas as páginas.
+    11*         Enumerar as páginas.
+    12*         Imprimir no máximo 25 linhas de detalhe por página.
+    13*         Deixar 2 linhas em branco entre os cabeçalhos.
+    14*         Deixar uma linha em branco entre o último cabeçalho
+    15*         e a primeira linha de detalhe.
+    16*         Imprimir os registros dos clientes que visitaram a
+    17*         empresa no período de 2010 a 2011.
+    18*         No final do processamento, imprimir o total de clientes
+    19*         conforme layout, deixando três linhas em branco entre a
+    20*         última linha de detalhe e a linha de total.
+    21
+    22
+    23 ENVIRONMENT DIVISION.
+    24
+    25 CONFIGURATION SECTION.
+    26 SOURCE-COMPUTER. BRUNO-PC.
+    27 OBJECT-COMPUTER. BRUNO-PC.
+    28 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    29
+    30 INPUT-OUTPUT SECTION.
+    31
+    32 FILE-CONTROL.
+    33     SELECT CADCLI ASSIGN TO DISK
+    34     ORGANIZATION IS LINE SEQUENTIAL.
+    35
+    36     SELECT RELCLI ASSIGN TO DISK.
+    37
+    38 DATA DIVISION.
+    39
+    40 FILE SECTION.
+    41
+    42 FD  CADCLI
+    43     LABEL RECORD ARE STANDARD
+    44     VALUE OF FILE-ID IS "CADCLI.DAT".
+    45 01  CADCLI1.
+    46     02 CPF-CLIENTE         PIC 9(11).
+    47     02 NOME-CLIENTE        PIC X(30).
+    48     02 ESTADO-CLIENTE      PIC X(02).
+    49     02 CIDADE-CLIENTE      PIC X(30).
+    50     02 TELEFONE-CLIENTE    PIC 9(08).
+    51     02 DATA-VIS-CLI        PIC 9(08).
+    52
+    53 FD  RELCLI
+    54     LABEL RECORD IS OMITTED
+    55     VALUE OF FILE-ID IS "RELCLI.TXT".
+    56 01  REL-ITEM PIC X(72).
+    57 01  REL-TOT  PIC X(72).
+* Microsoft COBOL Version 4.5        L2.4 revision 002 22-Apr-23 12:11 Page   2
+*                                       EX02.CBL
+    58
+    59 WORKING-STORAGE SECTION.
+    60 77  FIM-ARQ PIC X(03) VALUE "NAO".
+    61 77  CT-LIN  PIC 9(02) VALUE 25.
+    62 77  CT-PAG  PIC 9(02) VALUE ZEROES.
+    63
+    64 01  CAB-01.
+    65     02 FILLER  PIC X(54) VALUE SPACES.
+    66     02 FILLER  PIC X(05) VALUE "PAG. ".
+    67     02 VAR-PAG PIC 99(02).
+    68     02 FILLER  PIC X(11) VALUE SPACES.
+    69
+    70 01  CAB-02.
+    71     02 FILLER  PIC X(23) VALUE SPACES.
+    72     02 FILLER  PIC X(18) VALUE "TURISMAR  TURISMOS".
+    73     02 FILLER  PIC X(31) VALUE SPACES.
+    74
+    75 01  CAB-03.
+    76     02 FILLER PIC X(14) VALUE SPACES.
+    77     02 FILLER PIC X(24) VALUE "CLIENTES NO PERIODO DE: ".
+    78     02 FILLER PIC X(12) VALUE " 2010 A 2011".
+    79     02 FILLER PIC X(18) VALUE SPACES.
+    80
+    81 01  CAB-04.
+    82     02 FILLER PIC X(4) VALUE SPACES.
+    83     02 FILLER PIC X(8) VALUE "  NOME  ".
+    84     02 FILLER PIC X(20) VALUE SPACES.
+    85     02 FILLER PIC X(8) VALUE " ESTADO ".
+    86     02 FILLER PIC X(12) VALUE SPACES.
+    87     02 FILLER PIC X(8) VALUE "TELEFONE".
+    88     02 FILLER PIC X(12) VALUE SPACES.
+    89
+    90 01  CAB-05.
+    91     02 FILLER PIC X(31) VALUE "-------------------------------".
+    92     02 FILLER PIC X(31) VALUE "-------------------------------".
+    93
+    94 01  DETALHE.
+    95     02 FILLER      PIC X(02) VALUE SPACES.
+    96     02 NOME        PIC X(30).
+    97     02 FILLER      PIC X(03) VALUE SPACES.
+    98     02 ESTADO      PIC X(02).
+    99     02 FILLER      PIC X(15) VALUE SPACES.
+   100     02 TELEFONE-P1 PIC 9(04).
+   101     02 FILLER      PIC X(1) VALUE "-".
+   102     02 TELEFONE-P2 PIC 9(04).
+   103     02 FILLER      PIC X(01) VALUE SPACES.
+   104
+   105 01  TOTAL-CLIENTES.
+   106     02 FILLER PIC X(19) VALUE "Total de Clientes: ".
+   107     02 QTD-CLIENTES PIC 9(04) VALUE ZEROES.
+   108
+   109 PROCEDURE DIVISION.
+   110
+   111 MAIN.
+   112     PERFORM INICIO.
+   113     PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+   114     PERFORM FIM.
+   115     STOP RUN.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 22-Apr-23 12:11 Page   3
+*                                       EX02.CBL
+   116
+   117 INICIO.
+   118     OPEN INPUT  CADCLI
+   119          OUTPUT RELCLI.
+   120     PERFORM LEITURA.
+   121
+   122 LEITURA.
+   123     READ CADCLI AT END MOVE "SIM" TO FIM-ARQ.
+   124
+   125 CABECALHO.
+   126     ADD 1         TO CT-PAG.
+   127     MOVE CT-PAG   TO VAR-PAG.
+   128     MOVE SPACES   TO REL-ITEM.
+   129
+   130     IF CT-PAG = 1
+   131         WRITE REL-ITEM FROM CAB-01
+   132     ELSE WRITE REL-ITEM FROM CAB-01 AFTER ADVANCING 4 LINE.
+   133     WRITE REL-ITEM FROM CAB-02 AFTER ADVANCING 1 LINE.
+   134     WRITE REL-ITEM FROM CAB-03 AFTER ADVANCING 3 LINE.
+   135     WRITE REL-ITEM FROM CAB-04 AFTER ADVANCING 3 LINE.
+   136     WRITE REL-ITEM FROM CAB-05 AFTER ADVANCING 1 LINE.
+   137
+   138     MOVE ZEROES   TO CT-LIN.
+   139
+   140 IMPRESSAO.
+   141     IF CT-LIN EQUAL 25
+   142         PERFORM CABECALHO.
+   143
+   144     MOVE NOME-CLIENTE            TO NOME.
+   145     MOVE ESTADO-CLIENTE          TO ESTADO.
+   146     MOVE TELEFONE-CLIENTE(1:4)   TO TELEFONE-P1.
+   147     MOVE TELEFONE-CLIENTE(5:8)   TO TELEFONE-P2.
+   148     ADD 1                        TO CT-LIN.
+   149
+   150     IF CT-LIN EQUAL 1
+   151         WRITE REL-ITEM FROM DETALHE AFTER ADVANCING 2 LINE
+   152     ELSE WRITE REL-ITEM FROM DETALHE AFTER ADVANCING 1 LINE.
+   153
+   154 PRINCIPAL.
+   155     IF DATA-VIS-CLI(5:8)=2010 OR DATA-VIS-CLI(5:8) = 2011
+   156        ADD 1 TO QTD-CLIENTES
+   157        PERFORM IMPRESSAO.
+   158     PERFORM LEITURA.
+   159
+   160 FIM.
+   161     WRITE REL-TOT FROM TOTAL-CLIENTES AFTER ADVANCING 4 LINE.
+   162     CLOSE CADCLI RELCLI.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1596     Code:         765     Dictionary:        1864
