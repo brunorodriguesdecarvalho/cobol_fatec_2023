@@ -29,4 +29,6 @@ If you would like to contribute to this repository, feel free to send a [pull re
 
 ## License :scroll:
 
-This repository is licensed under the [MIT License](./LICENSE.md). See the [LICENSE.md](./LICENSE.md) file for more information.
+This repository is licensed under the [GPL-3.0](./LICENSE.md). 
+
+See the [LICENSE.md](./LICENSE.md) file for more information or [https://www.gnu.org/licenses/gpl-3.0.en.html](https://www.gnu.org/licenses/gpl-3.0.en.html).
