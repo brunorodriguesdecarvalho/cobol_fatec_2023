@@ -4,7 +4,7 @@
        DATE-WRITTEN. 22/04/2023.
        DATE-COMPILED. 22/04/2023.
        INSTALLATION. BRUNO-PC.
-       SECURITY. ESSE PROGRAMA SO PODE SER ALTERADO PELOA AUTOR.
+       SECURITY. ESSE PROGRAMA SO PODE SER ALTERADO PELO AUTOR.
       *REMARKS. Ler CADCLI
       *         Imprimir RELCLI conforme lay-out.
       *         Imprimir cabeçalhos em todas as páginas.

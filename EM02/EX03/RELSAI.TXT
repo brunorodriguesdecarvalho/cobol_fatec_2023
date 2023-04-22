@@ -1,0 +1,87 @@
+                                                      PAG. 0001         
+            LISTAGEM DOS CLIENTES DO SEXO FEMININO                      
+              COM SALARIOS SUPERIORES A 5.000,00                        
+
+
+     CODIGO        NOME                                 SALARIO         
+
+     0000005     Rafaela Almeida                        06.028,09       
+     0000007     Larissa Costa                          05.087,35       
+     0000013     Mariana Alves                          06.017,49       
+     0000015     Giovanna Fernandes                     08.894,60       
+     0000018     Isabel Santos                          08.138,90       
+     0000029     Carolina Alves                         05.254,11       
+     0000031     Andrea Fernandes                       07.876,11       
+     0000033     Cristina Santos                        05.382,97       
+     0000035     Isadora Rodrigues                      06.853,70       
+     0000037     Jessica Carvalho                       06.405,77       
+     0000040     Marcela Fernandes                      08.373,03       
+     0000044     Lorena Carvalho                        05.201,68       
+     0000046     Fabiola Pereira                        06.052,10       
+     0000048     Mariana Almeida                        06.809,22       
+     0000054     Leticia Pereira                        08.718,87       
+     0000055     Rafaela Oliveira                       07.643,90       
+     0000057     Isabella Fernandes                     08.211,15       
+     0000059     Camila Silva                           06.097,87       
+     0000061     Gabriela Costa                         06.414,08       
+     0000063     Beatriz Rodrigues                      06.333,99       
+
+
+
+                                                      PAG. 0002         
+            LISTAGEM DOS CLIENTES DO SEXO FEMININO                      
+              COM SALARIOS SUPERIORES A 5.000,00                        
+
+
+     CODIGO        NOME                                 SALARIO         
+
+     0000065     Juliana Oliveira                       07.188,34       
+     0000073     Ana Carolina Almeida                   05.673,12       
+     0000075     Bruna Rodrigues                        07.092,16       
+     0000079     Mariana Alves                          07.081,43       
+     0000083     Raissa Carvalho                        09.904,90       
+     0000085     Leticia Rodrigues                      06.852,48       
+     0000087     Bianca Costa                           07.542,17       
+     0000089     Isabella Fernandes                     09.716,32       
+     0000091     Ana Clara Santos                       05.908,77       
+     0000095     Fernanda Pereira                       09.979,05       
+     0000098     Marina Santos                          06.783,89       
+     0000100     Ana Beatriz Carvalho                   05.522,22       
+     0000102     Leticia Rodrigues                      06.007,76       
+     0000106     Vivian Fernandes                       09.310,89       
+     0000110     Gabriela Almeida                       09.456,10       
+     0000112     Maria Santos                           05.554,44       
+     0000116     Isadora Rodrigues                      08.232,49       
+     0000118     Leticia Fernandes                      07.223,91       
+     0000122     Ana Carolina Silva                     08.071,93       
+     0000124     Luana Fernandes                        09.387,82       
+
+
+
+                                                      PAG. 0003         
+            LISTAGEM DOS CLIENTES DO SEXO FEMININO                      
+              COM SALARIOS SUPERIORES A 5.000,00                        
+
+
+     CODIGO        NOME                                 SALARIO         
+
+     0000126     Mariana Alves                          07.295,47       
+     0000128     Fernanda Rodrigues                     08.496,72       
+     0000130     Bianca Almeida                         05.989,88       
+     0000132     Amanda Costa                           13.928,26       
+     0000134     Larissa Carvalho                       17.027,56       
+     0000136     Isabella Rodrigues                     16.034,21       
+     0000138     Carolina Fernandes                     14.813,31       
+     0000140     Ana Carolina Oliveira                  17.461,46       
+     0000142     Maria Costa                            12.853,52       
+     0000144     Leticia Almeida                        17.844,05       
+     0000146     Isadora Souza                          15.242,88       
+     0000147     Rafaela Santos                         17.502,33       
+     0000149     Juliana Almeida                        19.021,77       
+     0000151     Bianca Santos                          13.450,22       
+     0000153     Leticia Rodrigues                      15.930,18       
+
+
+
+Total de Clientes impressos:          00.055                            
+Total de Salario:             000.501.176,99                            
