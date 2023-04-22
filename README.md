@@ -27,7 +27,7 @@ The programs have been tested using the software provided by FATEC, but you can 
 
 To compile and run a COBOL program, I used the following commands:
 
-a) Navigate to the folder where the CBL file is, for example EM02 and EX04:
+a) Navigate to the folder where the CBL file is, i.e.: EM02 and EX04
 ```
 cd em02/ex04
 ```
