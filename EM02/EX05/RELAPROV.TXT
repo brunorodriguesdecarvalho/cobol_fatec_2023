@@ -1,0 +1,48 @@
+          RELATORIO DE ALUNOS APROVADOS           PAG.  1                       
+
+NUMERO      NOME DO ALUNO                 MEDIA    FALTAS                       
+
+0000001    Luciana Silva                  10,00      10                         
+0000003    Gustavo Fernandes               9,66      10                         
+0000004    Aline Oliveira                  9,66      10                         
+0000005    Rafaela Almeida                 9,66      10                         
+0000006    Paulo Rodrigues                 9,66      10                         
+0000007    Larissa Costa                   9,66      10                         
+0000008    Marcos Souza                    9,66      10                         
+0000012    Eduardo Oliveira                9,66      10                         
+0000013    Mariana Alves                   9,66      10                         
+0000015    Giovanna Fernandes              9,66      10                         
+0000016    Thiago Costa                    9,66      10                         
+0000018    Isabel Santos                   9,66      10                         
+0000019    Roberto Carvalho                9,66      10                         
+0000021    Arthur Fernandes                9,66      10                         
+0000023    Leticia Almeida                 7,50      02                         
+0000026    Leandro Costa                   9,66      10                         
+0000028    Diego Oliveira                  9,66      10                         
+0000031    Andrea Fernandes                9,66      10                         
+0000032    Vinicius Costa                  7,50      02                         
+0000036    Bruno Fernandes                 7,50      02                         
+0000049    Lucas Fernandes                 7,50      02                         
+0000060    Rodrigo Santos                  7,50      02                         
+0000078    Lucas Costa                     7,50      02                         
+0000081    Gabriela Silva                  7,50      02                         
+0000082    Gabriel Santos                  7,50      02                         
+0000085    Leticia Rodrigues               7,50      02                         
+0000098    Marina Santos                   8,40      03                         
+0000106    Vivian Fernandes                9,50      02                         
+0000111    Joao Carvalho                   7,50      02                         
+0000113    Eduardo Fernandes               7,50      02                         
+
+
+
+          RELATORIO DE ALUNOS APROVADOS           PAG.  2                       
+
+NUMERO      NOME DO ALUNO                 MEDIA    FALTAS                       
+
+0000132    Amanda Costa                    9,00      02                         
+0000150    Gabriel Carvalho                9,66      02                         
+
+
+
+Total de alunos aprovados: 00032                                                
+Media geral da turma     :  8,86                                                
