@@ -1,0 +1,51 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 14:50 Page   1
+*                                       EX04.CBL
+* Options: LIST(EX04.LST) ASMLIST(EX04.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.  EM01-EX04.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  15/SEP/2023.
+     6 DATE-COMPILED. 15-Sep-23 14:50.
+     7
+     8 ENVIRONMENT DIVISION.
+     9 CONFIGURATION SECTION.
+    10 SOURCE-COMPUTER. FATEC-SP.
+    11 OBJECT-COMPUTER. BRUNO-PC.
+    12 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    13
+    14 DATA DIVISION.
+    15 WORKING-STORAGE SECTION.
+    16
+    17 77 CFAB PIC 9(6).
+    18 77 PD   PIC 9(2) VALUE 28.
+    19 77 IMP  PIC 9(2) VALUE 45.
+    20 77 CFIN PIC Z.ZZZ.Z99,99.
+    21
+    22 PROCEDURE DIVISION.
+    23
+    24 INICIO.
+    25
+    26     DISPLAY ERASE.
+    27     DISPLAY "CALCULO CUSTO CARRO" AT 0520.
+    28     DISPLAY "CUSTO DE FABRICA: " AT 1010.
+    29
+    30     ACCEPT CFAB AT 1029.
+    31
+    32     COMPUTE CFIN = ((PD/100)*CFAB)+((IMP/100)*CFAB)+CFAB.
+    33
+    34     DISPLAY "CUSTO FINAL: " AT 1510 CFIN.
+    35
+    36     DISPLAY " " AT 1910.
+    37
+    38 STOP RUN.
+    39
+    40
+    41
+    42
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         648     Code:         222     Dictionary:         468

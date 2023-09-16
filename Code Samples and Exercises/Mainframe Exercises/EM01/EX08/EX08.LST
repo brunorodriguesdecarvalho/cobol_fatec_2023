@@ -1,0 +1,70 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 16:06 Page   1
+*                                       EX08.CBL
+* Options: LIST(EX08.LST) ASMLIST(EX08.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.  EM01-EX08.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  15/SEP/2023.
+     6 DATE-COMPILED. 15-Sep-23 16:06.
+     7
+     8 ENVIRONMENT DIVISION.
+     9 CONFIGURATION SECTION.
+    10 SOURCE-COMPUTER. FATEC-SP.
+    11 OBJECT-COMPUTER. BRUNO-PC.
+    12 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    13
+    14 DATA DIVISION.
+    15 WORKING-STORAGE SECTION.
+    16
+    17 77 L1   PIC 9(2) VALUE ZEROS.
+    18 77 L2   PIC 9(2) VALUE ZEROS.
+    19 77 L3   PIC 9(2) VALUE ZEROS.
+    20 77 FLAG PIC X(30) VALUE 'NAO FORMAM UM TRIANGULO'.
+    21
+    22
+    23 PROCEDURE DIVISION.
+    24
+    25 INICIO.
+    26
+    27     DISPLAY ERASE.
+    28     DISPLAY "VERIFICADOR DE TRIANGULOS" AT 0520.
+    29
+    30     DISPLAY "LADO 1: " AT 1010.
+    31     ACCEPT L1 AT 1019.
+    32
+    33     DISPLAY "LADO 2: " AT 1110.
+    34     ACCEPT L2 AT 1119.
+    35
+    36     DISPLAY "LADO 3: " AT 1210.
+    37     ACCEPT L3 AT 1219.
+    38
+    39     IF (L1+L2)>L3 THEN
+    40         IF (L1+L3)>L2 THEN
+    41             IF (L2+L3)>L1 THEN
+    42                 IF (L1 = L2) AND (L1 = L3) THEN
+    43                    MOVE 'TRIANGULO EQUILATERO' TO FLAG
+    44                 ELSE
+    45                     IF (L1=L2) OR (L2=L3) OR (L1=L3) THEN
+    46                         MOVE 'TRIANGULO ISOCELES' TO FLAG
+    47                     ELSE
+    48                         MOVE 'TRIANGULO ESCALENO' TO FLAG.
+    49
+    50
+    51     DISPLAY "RESULTADO DO TESTE: " AT 1410 FLAG.
+    52
+    53     DISPLAY " " AT 1910.
+    54
+    55 STOP RUN.
+    56
+    57
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 16:06 Page   2
+*                                       EX08.CBL
+    58
+    59
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         668     Code:         397     Dictionary:         454

@@ -1,0 +1,91 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EX02.
+       AUTHOR. BRUNO CARVALHO.
+       INSTALLATION. BRUNO-PC.
+       DATE-WRITTEN. 28/05/2023.
+       DATE-COMPILED. 28/05/2023.
+       SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-PC.
+       OBJECT-COMPUTER. IBM-PC.
+       SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CADENT ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+
+           SELECT ARQORD ASSIGN TO DISK.
+
+           SELECT CADSAI ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+       
+       DATA DIVISION.
+       FILE SECTION.
+
+       FD CADENT
+           LABEL RECORDS ARE STANDARD
+           VALUE OF FILE-ID IS "CADENT.DAT".
+       01 CAD-ENT.
+           02 CODIGO-ENT PIC 9(05).
+           02 NOME-ENT   PIC X(30).
+           02 SEXO-ENT   PIC X(01).
+
+       SD ARQORD.
+       01 SORTED.
+           02 CODIGO-SORT PIC 9(05).
+           02 NOME-SORT   PIC X(30).
+           02 SEXO-SORT   PIC X(01).        
+
+       FD CADSAI
+           LABEL RECORDS ARE STANDARD
+           VALUE OF FILE-ID IS "CADSAI.DAT".
+       01 CAD-SAI.
+           02 CODIGO-SAI PIC 9(05).
+           02 NOME-SAI   PIC X(30).       
+
+       WORKING-STORAGE SECTION.
+       77 FIM-ARQ PIC X(03) VALUE "NAO".
+
+       PROCEDURE DIVISION.
+          
+       PGM-EX02.
+           SORT ARQORD
+                DESCENDING KEY CODIGO-SORT
+                USING CADENT
+                OUTPUT PROCEDURE ROT-SAIDA.
+           STOP RUN.
+
+       ROT-SAIDA SECTION.
+           PERFORM INICIO.
+           PERFORM PRINCIPAL UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM FIM.
+
+       INICIO SECTION.
+           OPEN OUTPUT CADSAI.
+           PERFORM LE-SORT.
+
+       LE-SORT SECTION.
+           RETURN ARQORD AT END MOVE "SIM" TO FIM-ARQ.
+
+       PRINCIPAL SECTION.
+           PERFORM SELECAO.
+           PERFORM LE-SORT.
+
+       SELECAO SECTION.
+           IF SEXO-SORT EQUAL "M"
+               PERFORM GRAVACAO.    
+       
+       GRAVACAO SECTION.
+           MOVE CODIGO-SORT TO CODIGO-SAI.
+           MOVE NOME-SORT TO NOME-SAI.
+           WRITE CAD-SAI.
+
+       FIM SECTION.
+           CLOSE CADSAI.
+                  
+
+
+

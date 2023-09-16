@@ -1,0 +1,50 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 18-Aug-23 19:58 Page   1
+*                                       EX01.CBL
+* Options: LIST(EX01.LST) ASMLIST(EX01.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.  EM01-EX01.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  18/AUG/2023.
+     6 DATE-COMPILED. 18-Aug-23 19:58.
+     7
+     8 ENVIRONMENT DIVISION.
+     9 CONFIGURATION SECTION.
+    10 SOURCE-COMPUTER. FATEC-SP.
+    11 OBJECT-COMPUTER. BRUNO-PC.
+    12 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    13
+    14 DATA DIVISION.
+    15 WORKING-STORAGE SECTION.
+    16
+    17 77 BASE PIC 9(003) VALUE ZEROS.
+    18 77 ALTURA PIC 9(003) VALUE ZEROS.
+    19 77 AREA-RESULT PIC 9(003) VALUE ZEROS.
+    20
+    21 PROCEDURE DIVISION.
+    22
+    23 INICIO.
+    24
+    25     DISPLAY ERASE.
+    26     DISPLAY "CALCULO DE AREA (TRIANGULOS)" AT 0521.
+    27     DISPLAY "BASE: " AT 1010.
+    28     DISPLAY "ALTURA: "  AT 1210.
+    29
+    30     ACCEPT BASE AT 1019.
+    31     ACCEPT ALTURA AT 1219.
+    32
+    33     COMPUTE AREA-RESULT = (BASE * ALTURA) / 2.
+    34     DISPLAY "AREA: " AT 1410 AREA-RESULT.
+    35     DISPLAY " " AT 1810.
+    36
+    37 STOP RUN.
+    38
+    39
+    40
+    41
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         632     Code:         214     Dictionary:         417

@@ -1,0 +1,72 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 28-May-23 21:06 Page   1
+*                                       EX01.CBL
+* Options: LIST(EX01.LST) ASMLIST(EX01.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID. EX01.
+     3 AUTHOR. BRUNO CARVALHO.
+     4 INSTALLATION. BRUNO-PC.
+     5 DATE-WRITTEN. 28/05/2023.
+     6 DATE-COMPILED. 28-May-23 21:06.
+     7 SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+     8
+     9 ENVIRONMENT DIVISION.
+    10 CONFIGURATION SECTION.
+    11 SOURCE-COMPUTER. IBM-PC.
+    12 OBJECT-COMPUTER. IBM-PC.
+    13 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    14
+    15 INPUT-OUTPUT SECTION.
+    16 FILE-CONTROL.
+    17     SELECT CADENT ASSIGN TO DISK
+    18     ORGANIZATION IS LINE SEQUENTIAL.
+    19
+    20     SELECT ARQORD ASSIGN TO DISK.
+    21
+    22     SELECT CADSAI ASSIGN TO DISK
+    23     ORGANIZATION IS LINE SEQUENTIAL.
+    24
+    25 DATA DIVISION.
+    26 FILE SECTION.
+    27
+    28 FD CADENT
+    29     LABEL RECORDS ARE STANDARD
+    30     VALUE OF FILE-ID IS "CADENT.DAT".
+    31 01 CAD-ENT.
+    32     02 CODIGO-ENT PIC 9(05).
+    33     02 NOME-ENT   PIC X(30).
+    34     02 SEXO-ENT   PIC X(01).
+    35
+    36 SD ARQORD.
+    37 01 SORTED.
+    38     02 CODIGO-SORT PIC 9(05).
+    39     02 NOME-SORT   PIC X(30).
+    40     02 SEXO-SORT   PIC X(01).
+    41
+    42 FD CADSAI
+    43     LABEL RECORDS ARE STANDARD
+    44     VALUE OF FILE-ID IS "CADSAI.DAT".
+    45 01 CAD-SAI.
+    46     02 CODIGO-SAI PIC 9(05).
+    47     02 NOME-SAI   PIC X(30).
+    48     02 SEXO-SAI   PIC X(01).
+    49
+    50 WORKING-STORAGE SECTION.
+    51 77 FIM-ARQ PIC X(03) VALUE "NAO".
+    52
+    53 PROCEDURE DIVISION.
+    54
+    55 PGM-EX01.
+    56     SORT ARQORD
+    57          ASCENDING KEY CODIGO-SORT
+* Microsoft COBOL Version 4.5        L2.4 revision 002 28-May-23 21:06 Page   2
+*                                       EX01.CBL
+    58          ASCENDING KEY NOME-SORT
+    59          USING CADENT
+    60          GIVING CADSAI.
+    61     STOP RUN.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:        1260     Code:         275     Dictionary:        1266

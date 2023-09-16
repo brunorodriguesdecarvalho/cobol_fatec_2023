@@ -1,0 +1,68 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 15:08 Page   1
+*                                       EX05.CBL
+* Options: LIST(EX05.LST) ASMLIST(EX05.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.  EM01-EX05.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  15/SEP/2023.
+     6 DATE-COMPILED. 15-Sep-23 15:08.
+     7
+     8 ENVIRONMENT DIVISION.
+     9 CONFIGURATION SECTION.
+    10 SOURCE-COMPUTER. FATEC-SP.
+    11 OBJECT-COMPUTER. BRUNO-PC.
+    12 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    13
+    14 DATA DIVISION.
+    15 WORKING-STORAGE SECTION.
+    16
+    17
+    18 77 QTD PIC 9(3).
+    19 77 SAL PIC 9(6).
+    20 77 VTV PIC 9(7).
+    21
+    22 77 FEE PIC 9(2) VALUE 5.
+    23
+    24 77 VCV PIC 9(6).
+    25 77 FIN PIC ZZZ.ZZZ.Z99,99.
+    26
+    27 PROCEDURE DIVISION.
+    28
+    29 INICIO.
+    30
+    31     DISPLAY ERASE.
+    32     DISPLAY "CALCULO SALARIO FINAL" AT 0520.
+    33
+    34     DISPLAY "NUMERO DE CARROS VENDIDOS: " AT 1010.
+    35     ACCEPT QTD AT 1038.
+    36
+    37     DISPLAY "VALOR TOTAL DE VENDAS: " AT 1110.
+    38     ACCEPT VTV AT 1134.
+    39
+    40     DISPLAY "VALOR POR CARRO VENDIDO: " AT 1210.
+    41     ACCEPT VCV AT 1236.
+    42
+    43     DISPLAY "SALARIO FIXO: " AT 1310.
+    44     ACCEPT SAL AT 1324.
+    45
+    46
+    47     COMPUTE FIN = SAL+(QTD*VCV)+(VTV*FEE).
+    48
+    49     DISPLAY "SALARIO FINAL: " AT 1510 FIN.
+    50
+    51     DISPLAY " " AT 1910.
+    52
+    53 STOP RUN.
+    54
+    55
+    56
+    57
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 15:08 Page   2
+*                                       EX05.CBL
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         668     Code:         367     Dictionary:         573

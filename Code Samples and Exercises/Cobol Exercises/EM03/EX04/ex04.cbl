@@ -1,0 +1,188 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EX04.
+       AUTHOR. BRUNO CARVALHO.
+       INSTALLATION. BRUNO-PC.
+       DATE-WRITTEN. 28/05/2023.
+       DATE-COMPILED. 28/05/2023.
+       SECURITY. APENAS O AUTOR PODE MODIFICA-LO.
+
+       ENVIRONMENT DIVISION.
+       
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. IBM-PC.
+       OBJECT-COMPUTER. IBM-PC.
+       SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT CADCLI ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+
+           SELECT ARQORD ASSIGN TO DISK.
+           SELECT RELAT ASSIGN TO DISK.
+       
+       DATA DIVISION.
+       FILE SECTION.
+
+       FD CADCLI
+           LABEL RECORD ARE STANDARD
+           VALUE OF FILE-ID IS "CADCLI.DAT".
+       01 REG-CLIENTE.
+           02 CODIGO-ENT   PIC 9(03).
+           02 CPF-ENT      PIC 9(11).
+           02 NOME-ENT     PIC X(30).
+           02 ESTADO-ENT   PIC X(02).
+           02 CIDADE-ENT   PIC X(30).
+           02 EMAIL-ENT    PIC X(30).
+
+       SD ARQORD.
+       01 SORTED.
+           02 CODIGO-SORT   PIC 9(03).
+           02 CPF-SORT      PIC 9(11).
+           02 NOME-SORT     PIC X(30).
+           02 EST-SORT   PIC X(02).
+           02 CID-SORT   PIC X(30).
+           02 EMAIL-SORT    PIC X(30).        
+
+       FD RELAT
+           LABEL RECORD IS OMITTED.
+       01 REG-REL  PIC X(72).              
+
+       WORKING-STORAGE SECTION.
+       77 FIM-ARQ PIC X(03) VALUE "NAO".
+       77 CT-LIN  PIC 9(02) VALUE 20.
+       77 CT-PAG  PIC 9(02) VALUE ZEROES.
+       77 EST-TMP PIC X(02).
+       77 CID-TMP PIC X(30).
+
+       01 CAB-01.
+           02 FILLER  PIC X(10) VALUE SPACES.
+           02 FILLER  PIC X(19) VALUE "RELACAO DE CLIENTES".
+           02 FILLER  PIC X(18) VALUE " POR ESTADO/CIDADE".
+           02 FILLER  PIC X(18) VALUE SPACES.
+           02 FILLER  PIC X(05) VALUE "PAG.".
+           02 VAR-PAG PIC 9(02).
+
+       01 CAB-02.
+           02 FILLER  PIC X(08) VALUE "ESTADO: ".
+           02 ESTADO-DET  PIC X(02).
+
+       01 CAB-03.
+           02 FILLER      PIC X(08) VALUE "CIDADE: ".
+           02 CIDADE-DET  PIC X(30).
+
+       01 CAB-04.
+           02 FILLER  PIC X(03) VALUE "CPF".
+           02 FILLER  PIC X(10) VALUE SPACES.           
+           02 FILLER  PIC X(04) VALUE "NOME".           
+           02 FILLER  PIC X(28) VALUE SPACES.                      
+           02 FILLER  PIC X(06) VALUE "E-MAIL". 
+
+       01 DETALHE.
+           02 CPF-DET PIC 9(11).
+           02 FILLER  PIC X(02) VALUE SPACES.                       
+           02 NOME-DET PIC X(20).
+           02 FILLER  PIC X(02) VALUE SPACES.
+           02 EMAIL-DET PIC X(30).
+
+       PROCEDURE DIVISION.
+          
+       PGM-EX04.
+           SORT ARQORD
+                ASCENDING KEY EST-SORT
+                ASCENDING KEY CID-SORT
+                ASCENDING KEY NOME-SORT
+                INPUT PROCEDURE ROT-ENTRADA
+                OUTPUT PROCEDURE ROT-SAIDA.
+           STOP RUN.
+
+       ROT-ENTRADA SECTION.
+           PERFORM INICIO-ENTRADA.
+           PERFORM PRINCIPAL-ENTRADA UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM FIM-ENTRADA.
+
+       INICIO-ENTRADA SECTION.
+           OPEN INPUT CADCLI.
+           PERFORM LEITURA-ENTRADA.
+
+       LEITURA-ENTRADA SECTION.
+           READ CADCLI AT END MOVE "SIM" TO FIM-ARQ.
+
+       PRINCIPAL-ENTRADA SECTION.
+           PERFORM SELECAO-ENTRADA.
+           PERFORM LEITURA-ENTRADA.
+
+       SELECAO-ENTRADA SECTION.
+           PERFORM GRAVACAO-ENTRADA.
+       
+       GRAVACAO-ENTRADA SECTION.
+           MOVE CODIGO-ENT TO CODIGO-SORT.
+           MOVE ESTADO-ENT TO EST-SORT.
+           MOVE CIDADE-ENT TO CID-SORT.
+           MOVE CPF-ENT TO CPF-SORT.
+           MOVE NOME-ENT TO NOME-SORT.                         
+           MOVE EMAIL-ENT TO EMAIL-SORT.
+           RELEASE SORTED.
+
+       FIM-ENTRADA SECTION.
+           CLOSE CADCLI.     
+
+       ROT-SAIDA SECTION.
+           PERFORM INICIO-SAIDA.
+           PERFORM PRINCIPAL-SAIDA UNTIL FIM-ARQ EQUAL "SIM".
+           PERFORM FIM-SAIDA.
+
+       INICIO-SAIDA SECTION.
+           MOVE "NAO" TO FIM-ARQ.
+           OPEN OUTPUT RELAT.
+           PERFORM LE-SAIDA.
+
+       LE-SAIDA SECTION.
+           RETURN ARQORD AT END MOVE "SIM" TO FIM-ARQ.
+
+       PRINCIPAL-SAIDA SECTION.
+           PERFORM LE-SAIDA.
+           PERFORM IMPRESSAO-SAIDA.
+           
+       
+       IMPRESSAO-SAIDA SECTION.
+           
+           IF EST-TMP NOT EQUAL TO EST-SORT  
+               MOVE EST-SORT TO EST-TMP  
+               PERFORM CABECALHO-SAIDA
+           ELSE IF CID-TMP NOT EQUAL TO CID-SORT  
+               MOVE CID-SORT TO CID-TMP  
+               PERFORM CABECALHO-SAIDA
+           ELSE IF CT-LIN EQUAL TO 19
+               PERFORM CABECALHO-SAIDA.    
+           PERFORM DETALHE-SAIDA.
+
+           
+       CABECALHO-SAIDA SECTION.
+           ADD 1 TO CT-PAG.
+           MOVE CT-PAG TO VAR-PAG.
+
+           IF CT-PAG = 1
+                WRITE REG-REL FROM CAB-01
+              ELSE WRITE REG-REL FROM CAB-01 AFTER ADVANCING 4 LINE.
+
+           MOVE EST-SORT TO ESTADO-DET.
+           WRITE REG-REL FROM CAB-02 AFTER ADVANCING 2 LINE.
+
+           MOVE CID-SORT TO CIDADE-DET.
+           WRITE REG-REL FROM CAB-03 AFTER ADVANCING 2 LINE.
+
+           WRITE REG-REL FROM CAB-04 AFTER ADVANCING 2 LINE.
+
+           MOVE ZEROES TO CT-LIN.
+
+       DETALHE-SAIDA SECTION.
+           MOVE CPF-SORT TO CPF-DET.
+           MOVE NOME-SORT TO NOME-DET.
+           MOVE EMAIL-SORT TO EMAIL-DET.
+
+           WRITE REG-REL FROM DETALHE AFTER ADVANCING 1 LINE.
+           ADD 1 TO CT-LIN.
+       
+       FIM-SAIDA SECTION.
+           CLOSE RELAT.

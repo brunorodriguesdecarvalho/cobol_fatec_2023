@@ -1,0 +1,44 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 16:32 Page   1
+*                                      EX07A.CBL
+* Options: LIST(EX07A.LST) ASMLIST(EX07A.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.  EM01-EX07.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  15/SEP/2023.
+     6 DATE-COMPILED. 15-Sep-23 16:32.
+     7
+     8 ENVIRONMENT DIVISION.
+     9 CONFIGURATION SECTION.
+    10 SOURCE-COMPUTER. FATEC-SP.
+    11 OBJECT-COMPUTER. BRUNO-PC.
+    12
+    13 DATA DIVISION.
+    14 WORKING-STORAGE SECTION.
+    15 01 CoeficienteA     PIC 9(5)V9(2).
+    16 01 CoeficienteB     PIC 9(5)V9(2).
+    17 01 Raiz             PIC S9(5)V9(2).
+    18
+    19 PROCEDURE DIVISION.
+    20 DISPLAY "Informe o coeficiente A (A diferente de 0): ".
+    21 ACCEPT CoeficienteA.
+    22
+    23 IF CoeficienteA = 0
+    24     DISPLAY "O coeficiente A não pode ser igual a zero."
+    25     GOBACK
+    26 END-IF.
+    27
+    28 DISPLAY "Informe o coeficiente B: ".
+    29 ACCEPT CoeficienteB.
+    30
+    31 COMPUTE Raiz = - CoeficienteB / CoeficienteA.
+    32
+    33 DISPLAY "RES:" Raiz.
+    34
+    35 STOP RUN.
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         644     Code:         234     Dictionary:         399

@@ -1,0 +1,133 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 22-Aug-23 00:58 Page   1
+*                                        MC.CBL
+* Options: LIST(MC.LST) ASMLIST(MC.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID. MATCALC.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 DATE-WRITTEN. 21-AUG-2023.
+     5 DATE-COMPILED. 22-Aug-23 00:58.
+     6
+     7 ENVIRONMENT DIVISION.
+     8 CONFIGURATION SECTION.
+     9 OBJECT-COMPUTER. NOTEBOOK-BRUNO.
+    10 SOURCE-COMPUTER. NOTEBOOK-BRUNO.
+    11 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    12
+    13 DATA DIVISION.
+    14 WORKING-STORAGE SECTION.
+    15     77 OPCAO PIC 9(1) VALUE 0.
+    16     77 OP1 PIC 9(9) VALUE 0.
+    17     77 OP2 PIC 9(9) VALUE 0.
+    18     77 RES PIC 9(9) VALUE 0.
+    19
+    20 PROCEDURE DIVISION.
+    21
+    22     PERFORM EXIBIR-MENU UNTIL OPCAO = 9.
+    23     DISPLAY ERASE.
+    24     DISPLAY "CALCULADORA ENCERRADA".
+    25     STOP RUN.
+    26
+    27     SOMA.
+    28        DISPLAY ERASE.
+    29
+    30        DISPLAY "CALCULADORA DO BRUNO" AT 0328
+    31        DISPLAY "SOMA" AT 0635
+    32        DISPLAY "----" AT 0735
+    33
+    34        DISPLAY "Digite o primeiro numero: " AT 1020
+    35        MOVE 0 TO OP1.
+    36        ACCEPT OP1 AT 1046.
+    37
+    38        DISPLAY "Digite o segundo numero: " AT 1120
+    39        MOVE 0 TO OP2.
+    40        ACCEPT OP2 AT 1146.
+    41
+    42        COMPUTE RES = OP1 + OP2.
+    43        DISPLAY "---------------------------------------" AT 1220.
+    44        DISPLAY "Resultado: " AT 1320.
+    45        DISPLAY RES AT 1331.
+    46
+    47        DISPLAY "OPCOES" AT 1611.
+    48        DISPLAY "---------------------------------" AT 1701
+    49        DISPLAY "1 - SOMAR NOVO VALOR AO RESULTADO" AT 1801.
+    50        DISPLAY "2 - NOVA SOMA" AT 1901.
+    51        DISPLAY "3 - VOLTAR AO MENU PRINCIPAL" AT 2001.
+    52        DISPLAY "4 - SAIR" AT 2101.
+    53
+    54        PERFORM UNTIL OPCAO = 4
+    55             DISPLAY "OPCAO SUB-MENU DESEJADA: " AT 2201
+    56             ACCEPT OPCAO AT 2226
+    57
+* Microsoft COBOL Version 4.5        L2.4 revision 002 22-Aug-23 00:58 Page   2
+*                                        MC.CBL
+    58             EVALUATE OPCAO
+    59                 WHEN 1
+    60                     DISPLAY "Opcao escolhida:" AT 2230
+    61                     DISPLAY "SOMAR NOVO VALOR AO RESULTADO"
+    62                     AT 2247
+    63                 WHEN 2
+    64                     DISPLAY "Opcao escolhida:" AT 2230
+    65                     DISPLAY "NOVA SOMA                    "
+    66                     AT 2247
+    67                 WHEN 3
+    68                     DISPLAY "Opcao escolhida:" AT 2230
+    69                     DISPLAY "VOLTAR AO MENU PRINCIPAL     "
+    70                     AT 2247
+    71                 WHEN 4
+    72                     DISPLAY "SAINDO.                      "
+    73                     AT 2230
+    74                     DISPLAY ERASE
+    75                 WHEN OTHER
+    76                     DISPLAY "OPCAO INVALIDA, tente outra vez."
+    77                       AT 2230
+    78             END-EVALUATE
+    79         END-PERFORM.
+    80
+    81     EXIBIR-MENU.
+    82         PERFORM UNTIL OPCAO = 9
+    83             DISPLAY ERASE
+    84             DISPLAY "CALCULADORA DO BRUNO" AT 0328
+    85             DISPLAY "MENU" AT 0635
+    86             DISPLAY "----" AT 0735
+    87             DISPLAY "1 - SOMA" AT 1030
+    88             DISPLAY "2 - SUBTRACAO" AT 1130
+    89             DISPLAY "3 - MULTIPLICACAO" AT 1230
+    90             DISPLAY "4 - DIVISAO" AT 1330
+    91             DISPLAY "5 - MATRIZES*" AT 1430
+    92             DISPLAY "9 - SAIR" AT 1930
+    93
+    94             DISPLAY "OPCAO DESEJADA: " AT 2130
+    95             ACCEPT OPCAO AT 2146
+    96
+    97             EVALUATE OPCAO
+    98                 WHEN 1
+    99                     PERFORM SOMA
+   100                 WHEN 2
+   101                     DISPLAY "Opcao escolhida: SUBTRACAO.     "
+   102                     AT 2230
+   103                 WHEN 3
+   104                     DISPLAY "Opcao escolhida: MULTIPLICACAO. "
+   105                     AT 2230
+   106                 WHEN 4
+   107                     DISPLAY "Opcao escolhida: DIVISAO.       "
+   108                     AT 2230
+   109                 WHEN 5
+   110                     DISPLAY "Opcao escolhida: MATRIZES.      "
+   111                     AT 2230
+   112                 WHEN 9
+   113                     DISPLAY "SAINDO.                         "
+   114                     AT 2230
+   115                 WHEN OTHER
+* Microsoft COBOL Version 4.5        L2.4 revision 002 22-Aug-23 00:58 Page   3
+*                                        MC.CBL
+   116                     DISPLAY "OPCAO INVALIDA, tente outra vez."
+   117                       AT 2230
+   118             END-EVALUATE
+   119         END-PERFORM.
+   120
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         664     Code:        1506     Dictionary:         486

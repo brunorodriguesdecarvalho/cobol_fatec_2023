@@ -1,0 +1,72 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 14:19 Page   1
+*                                       EX03.CBL
+* Options: LIST(EX03.LST) ASMLIST(EX03.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.  EM01-EX03.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  18/AUG/2023.
+     6 DATE-COMPILED. 15-Sep-23 14:19.
+     7
+     8 ENVIRONMENT DIVISION.
+     9 CONFIGURATION SECTION.
+    10 SOURCE-COMPUTER. FATEC-SP.
+    11 OBJECT-COMPUTER. BRUNO-PC.
+    12 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    13
+    14 DATA DIVISION.
+    15 WORKING-STORAGE SECTION.
+    16
+    17 77 ANO PIC 9(004) VALUE ZEROS.
+    18 77 MES PIC 9(002) VALUE ZEROS.
+    19 77 DIA PIC 9(002) VALUE ZEROS.
+    20 77 RES1 PIC 9(005) VALUE ZEROS.
+    21 77 RES2 PIC 9(005) VALUE ZEROS.
+    22 77 RES3 PIC 9(005) VALUE ZEROS.
+    23
+    24 PROCEDURE DIVISION.
+    25
+    26 INICIO.
+    27
+    28     DISPLAY ERASE.
+    29     DISPLAY "CALCULO DIAS" AT 0521.
+    30     DISPLAY "ANO (4 DIGITOS): " AT 1010.
+    31     DISPLAY "MES (2 DIGITOS): " AT 1210.
+    32     DISPLAY "DIA (2 DIGITOS): " AT 1410.
+    33
+    34     ACCEPT ANO AT 1027.
+    35     ACCEPT MES AT 1227.
+    36     ACCEPT DIA AT 1427.
+    37
+    38     COMPUTE RES1 = ((2023 - ANO) * 365).
+    39
+    40     IF MES > 9 THEN
+    41         COMPUTE RES2 = (9 - MES) * 30
+    42         IF DIA > 15 THEN
+    43             COMPUTE RES3 = RES1 + RES2 + DIA
+    44         ELSE
+    45             COMPUTE RES3 = RES1 + RES2 + DIA - 30
+    46     ELSE
+    47         IF DIA > 15 THEN
+    48             COMPUTE RES3 = RES1 - 365 + RES2 + DIA
+    49         ELSE
+    50             COMPUTE RES3 = RES1 - 365 + RES2 + DIA - 30.
+    51
+    52     DISPLAY "RESPOSTA (ANOS EM DIAS): " AT 1610 RES1.
+    53     DISPLAY "RESPOSTA (MES EM DIAS): " AT 1710 RES2.
+    54     DISPLAY "RESPOSTA (FINAL): " AT 1810 RES3.
+    55     DISPLAY " " AT 1910.
+    56
+    57 STOP RUN.
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 14:19 Page   2
+*                                       EX03.CBL
+    58
+    59
+    60
+    61
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         660     Code:         498     Dictionary:         567

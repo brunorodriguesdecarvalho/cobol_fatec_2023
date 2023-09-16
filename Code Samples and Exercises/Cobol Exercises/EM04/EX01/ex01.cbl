@@ -1,0 +1,73 @@
+       IDENTIFICATION DIVISION.
+       PROGRAM-ID. EX01.
+       AUTHOR. BRUNO CARVALHO.
+       DATE-WRITTEN. 05/06/2023.
+       DATE-COMPILED. 05/06/2023.
+      
+       ENVIRONMENT DIVISION.
+       CONFIGURATION SECTION.
+       SOURCE-COMPUTER. BRUNO-PC.
+       OBJECT-COMPUTER. BRUNO-PC.
+       SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+
+       INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           SELECT ARQA ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+        
+           SELECT ARQB ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+
+           SELECT ARQORD ASSIGN TO DISK.
+        
+           SELECT ARQC ASSIGN TO DISK
+           ORGANIZATION IS LINE SEQUENTIAL.
+       
+       DATA DIVISION.
+       FILE SECTION.
+      
+       FD ARQA
+           LABEL RECORDS ARE STANDARD
+           VALUE OF FILE-ID IS "ARQA.DAT".
+       01 INREC1.
+           02 CODIGO1 PIC 9(03).
+           02 NOME1 PIC X(30).
+           02 TURMA1 PIC X(20).
+       
+       FD ARQB
+           LABEL RECORDS ARE STANDARD
+           VALUE OF FILE-ID IS "ARQB.DAT".
+       01 INREC2.
+           02 CODIGO2 PIC 9(03).
+           02 NOME2 PIC X(30).
+           02 TURMA2 PIC X(20).
+
+       SD ARQORD.
+       01 SORTED.
+           02 CODIGO-S PIC 9(03).
+           02 NOME-S PIC X(30).
+           02 TURMA-S PIC X(20).   
+
+       FD ARQC
+           LABEL RECORDS ARE STANDARD
+           VALUE OF FILE-ID IS "ARQC.DAT".
+       01 OUTPUT-RECORD.
+           02 CODIGO3 PIC 9(03).
+           02 NOME3 PIC X(30).
+           02 TURMA3 PIC X(20).
+       
+       WORKING-STORAGE SECTION.
+       77 FIM-ARQ1 PIC X(03) VALUE "NAO".
+       77 FIM-ARQ2 PIC X(03) VALUE "NAO".
+       
+       PROCEDURE DIVISION.
+       
+       PGM-EX01.
+           SORT ARQORD
+               ASCENDING KEY CODIGO-S
+               USING ARQA ARQB
+               GIVING ARQC.
+           STOP RUN.
+
+  
+       

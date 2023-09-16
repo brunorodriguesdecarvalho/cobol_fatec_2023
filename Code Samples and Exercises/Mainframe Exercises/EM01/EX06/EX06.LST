@@ -1,0 +1,49 @@
+* Microsoft COBOL Version 4.5        L2.4 revision 002 15-Sep-23 15:15 Page   1
+*                                       EX06.CBL
+* Options: LIST(EX06.LST) ASMLIST(EX06.GRP)
+     1 IDENTIFICATION DIVISION.
+     2 PROGRAM-ID.  EM01-EX06.
+     3 AUTHOR. BRUNO RODRIGUES DE CARVALHO.
+     4 INSTALLATION.  FATEC-SP.
+     5 DATE-WRITTEN.  15/SEP/2023.
+     6 DATE-COMPILED. 15-Sep-23 15:15.
+     7
+     8 ENVIRONMENT DIVISION.
+     9 CONFIGURATION SECTION.
+    10 SOURCE-COMPUTER. FATEC-SP.
+    11 OBJECT-COMPUTER. BRUNO-PC.
+    12 SPECIAL-NAMES. DECIMAL-POINT IS COMMA.
+    13
+    14 DATA DIVISION.
+    15 WORKING-STORAGE SECTION.
+    16
+    17 77 KM PIC 9(4).
+    18 77 FIN PIC ZZ.Z99,99.
+    19
+    20 PROCEDURE DIVISION.
+    21
+    22 INICIO.
+    23
+    24     DISPLAY ERASE.
+    25     DISPLAY "APLICATIVO UBER (OU 99TAXI AHAHAH)" AT 0520.
+    26
+    27     DISPLAY "QUANTO KM VAI RODAR:  " AT 1010.
+    28     ACCEPT KM AT 1033.
+    29
+    30     COMPUTE FIN = 5+(KM*4,50).
+    31
+    32     DISPLAY "VALOR TOTAL DA CORRIDA: " AT 1510 FIN.
+    33
+    34     DISPLAY " " AT 1910.
+    35
+    36 STOP RUN.
+    37
+    38
+    39
+    40
+* Microsoft COBOL Version 4.5        L2.4 revision 002
+* (C)Copyright Microsoft Corp 1984, 1991       URN AXUPA/MS0/000000
+*                                              REF GNB-024050002A7
+*
+* Total Messages:     0
+* Data:         632     Code:         234     Dictionary:         358
